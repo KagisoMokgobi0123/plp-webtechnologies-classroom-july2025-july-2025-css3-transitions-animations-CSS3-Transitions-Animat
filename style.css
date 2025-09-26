@@ -1,0 +1,161 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f0f0f0;
+  margin: 0;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Part 1: CSS transitions & animations */
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  background: #ff6f61;
+  color: #fff;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1) rotate(-2deg);
+  background: #ff3b2e;
+}
+
+.card {
+  margin: 20px auto;
+  width: 300px;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 1.5s ease forwards 0.5s;
+}
+
+.pulse {
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  animation: pulseAnim 2s infinite;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseAnim {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Part 2 & Part 3: Boxes and animations */
+.box {
+  width: 150px;
+  height: 150px;
+  background: tomato;
+  margin: 20px auto;
+  border-radius: 10px;
+  transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.box.pulseBox {
+  animation: pulseAnim 2s infinite;
+}
+
+#animBox.animate {
+  transform: translateY(-50px) rotate(20deg);
+  background: orange;
+}
+
+/* Card flip for Part 3 */
+.card-container {
+  perspective: 1000px;
+  display: inline-block;
+  margin: 2rem;
+}
+
+.card-container .card {
+  width: 150px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  cursor: pointer;
+}
+
+.card-container .card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card .front, .card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.card .front { background: #3498db; }
+.card .back { background: #2ecc71; transform: rotateY(180deg); }
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+  animation: slideFadeIn 0.5s forwards;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
